@@ -61,7 +61,9 @@ Testing pyramid: ~70% unit, ~20% integration (recorded cassettes, real ffmpeg on
 ## Current status
 
 - Phase 0: code pushed (config + validation, rules + validation, `cloud/doctor.py`, `cloud/setup.sh`, `cloud/ALLOWED_DOMAINS.md`, CI). 50 tests passing.
-- **Next:** owner creates the "clipper" cloud environment (setup script = `cloud/setup.sh`, network = domains in `cloud/ALLOWED_DOMAINS.md`), then run `python -m cloud.doctor` there for the phase 0 gate. Then phase 1 (owner creates a Twitch app at dev.twitch.tv/console → secrets `TWITCH_CLIENT_ID`, `TWITCH_CLIENT_SECRET`).
+- Phase 0 gate: `python -m cloud.doctor` → RESULT: ready inside "clipper" (all required checks pass; TwitchDownloaderCLI = warn). CI: see latest Actions run.
+- Known: the session GitHub proxy returns 403 for repos outside the session's scope, so the TwitchDownloaderCLI download (lay295/TwitchDownloader) is refused. `cloud/setup.sh` now skips it with a warning. **Phase 4 must solve chat download** another way (e.g. yt-dlp Twitch `rechat` subtitles, or direct Twitch GQL) or add that repo to the environment.
+- **Next:** phase 1 — owner creates a Twitch app at dev.twitch.tv/console → GitHub repo secrets `TWITCH_CLIENT_ID`, `TWITCH_CLIENT_SECRET`.
 
 ## Secrets (names only)
 
