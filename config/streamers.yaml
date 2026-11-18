@@ -1,0 +1,36 @@
+# Streamers the checker tracks. Edit this file to add or remove people.
+#
+# primary:     where we watch for the stream ending and take the VOD from
+# backup:      where we fall back if the primary VOD is missing
+# game_source: how we know the stream was GTA 6
+#   - twitch            use the primary Twitch channel's category log
+#   - twitch:<login>    use another Twitch channel's category log (simulcasts)
+#   - title             look for GTA 6 keywords in the stream title (YouTube-only streamers)
+
+streamers:
+  - name: Kai Cenat
+    slug: kai-cenat
+    primary: { platform: youtube, handle: "@KaiCenatLive" }
+    backup: { platform: twitch, login: kaicenat }
+    game_source: "twitch:kaicenat"
+
+  - name: IShowSpeed
+    slug: ishowspeed
+    primary: { platform: youtube, handle: "@IShowSpeed" }
+    game_source: title
+
+  - name: Jynxzi
+    slug: jynxzi
+    primary: { platform: twitch, login: jynxzi }
+    backup: { platform: youtube, handle: "@Jynxzi" }
+    game_source: twitch
+
+  - name: CaseOh
+    slug: caseoh
+    primary: { platform: twitch, login: caseoh_ }
+    game_source: twitch
+
+# What counts as GTA 6.
+target_game:
+  twitch_categories: ["Grand Theft Auto VI"]
+  title_keywords: ["gta 6", "gta6", "gta vi", "gtavi", "grand theft auto vi", "grand theft auto 6"]

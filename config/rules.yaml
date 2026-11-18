@@ -1,0 +1,36 @@
+# Clip rules (approved 2026-11-18). The clip skill reads these on every run.
+
+clip:
+  seconds: 60          # every clip is exactly this long
+  buildup_seconds: 20  # roughly how much lead-in before the peak
+  aftermath_seconds: 10  # roughly how much reaction after the peak
+  snap_to_sentences: true
+  aspect: "9:16"
+  burn_captions: true
+
+selection:
+  clips_per_vod: 4           # per VOD, or per part of a split YouTube stream
+  backups: 2
+  min_spacing_minutes: 10    # clips at least this far apart...
+  spacing_exempt_under_minutes: 60  # ...unless the video is shorter than this
+  max_per_segment: 2         # no more than this many from one game/segment
+
+# What makes a moment worth clipping.
+wanted:
+  - rage moments
+  - yelling
+  - hype reactions
+  - understandable without context
+  - one clear payoff
+  - the streamer's face or voice carries it
+
+# Chat bursts that signal a moment (case-insensitive).
+chat_signals: ["KEKW", "LUL", "LULW", "OMEGALUL", "💀", "😂", "?????", "CLIP IT", "CLIP THAT", "W", "L"]
+
+# Always skip.
+skip:
+  - sponsor reads and ads
+  - copyrighted music playing
+  - dead air, waiting screens, AFK
+  - slurs, nudity, or anyone who looks underage
+  - moments that need the previous hour for context
